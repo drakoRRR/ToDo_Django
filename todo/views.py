@@ -15,14 +15,34 @@ def get_weather(city):
 
     return city_info
 
+
+def get_client_city(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+
+    response = requests.get(f'https://ipinfo.io/{ip}/json')
+    data = response.json()
+
+    if 'city' in data:
+        return data['city']
+    else:
+        return 'London'
+
+
 def main_page(request):
     '''Main page with the tasks'''
 
-    city_info = get_weather('London')
+    city_info = get_weather(get_client_city(request))
 
     context = {
         'weather': city_info
     }
+
+    get_client_city(request)
 
     return render(request, 'todo/mainpage.html', context)
 
@@ -37,3 +57,5 @@ def create_task(request):
     }
 
     return render(request, 'todo/addtask.html', context)
+
+
