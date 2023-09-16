@@ -1,0 +1,122 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+body::before {
+    content: "";
+    position: fixed; /* Fixed position so the blur covers the entire screen */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: blur(5px);
+    z-index: -1; /* Keep the background behind other elements */
+}
+
+.navbar-nav {
+    width: 100%;
+    justify-content: center;
+}
+.navbar-nav .nav-link {
+    margin: 0 10px;
+}
+.nav-link {
+    display: inline-block;
+    padding: 6px 12px;
+    color: #fff;
+    background-color: #007bff;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+.nav-link:hover {
+    background-color: #0056b3;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.navbar-brand {
+    order: -1;
+    margin-bottom: 15px;
+}
+
+.custom-link {
+    font-size: 20px;
+    padding: 10px 20px;
+}
+
+footer {
+    background-color: #f8f9fa; /* Set the background color for the footer */
+    padding: 20px 0; /* Add some padding to the top and bottom of the footer */
+    text-align: center; /* Center-align the content */
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin-top: 10px; /* Add space between the line and the company name */
+    font-size: 14px; /* Set the font size for the company name */
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+}
+
+.col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+}
+
+.col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+}
+
+label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+}
+
+
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+input[type=submit] {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
