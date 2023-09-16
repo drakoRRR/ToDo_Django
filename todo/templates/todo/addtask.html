@@ -25,16 +25,9 @@
 
     <div class="container mt-4">
         <div class="row">
-            <div class="col-md-3">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Weather</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">City: New York</h6>
-                        <p class="card-text">Temp: 20°C</p>
-                        <img src="weather-icon.png" alt="Weather Icon">
-                    </div>
-                </div>
-            </div>
+
+            {% include 'todo/weather.html' %}
+
             <div class="col-md-9">
                 <h1 id="headlogo">Adding Task</h1>
                 <ul class="list-group">
