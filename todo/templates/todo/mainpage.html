@@ -42,25 +42,26 @@
                 </form>
             </div>
             <form action="" method="post">
-            <ul class="list-group">
-                {% if tasks %}
-                    {% for task in tasks %}
-                    <li class="list-group-item" style="margin-bottom: 20px; padding: 20px; background-color: #f8f9fa;">
-                        <p>
-                            <h3>{{ task.title }}</h3> <span class="badge bg-secondary">{{ task.deadline }}</span>
-                            <a href="{% url 'delete_task' task.id %}" class="btn btn-success btn-sm float-end">Done</a>
-                        </p>
-                        <hr>
-                        <p><strong>Tag:</strong> {{ task.tag }}</p>
-                        <hr>
-                        <p>{{ task.description }} </p>
-                    </li>
-                    {% endfor %}
-                {% else %}
-                    <div class="beautiful-text">
-                        You have no tasks !
-                    </div>
-                {% endif %}
+                <ul class="list-group">
+                    {% if tasks %}
+                        {% for task in tasks %}
+                            <li class="list-group-item task-item">
+                                <p>
+                                <h3 class="task-title">{{ task.title }}</h3> <span
+                                    class="badge bg-secondary" id="task-deadline">{{ task.deadline }}</span>
+                                <a href="{% url 'delete_task' task.id %}" class="btn btn-success btn-sm float-end">Done</a>
+                                </p>
+                                <hr class="task-divider">
+                                <p class="task-tag"><strong>Tag:</strong> {{ task.tag }}</p>
+                                <hr class="task-divider">
+                                <p class="task-description">{{ task.description }} </p>
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                        <div class="beautiful-text">
+                            <h3>You have no tasks !</h3>
+                        </div>
+                    {% endif %}
             </ul>
             </form>
         </div>

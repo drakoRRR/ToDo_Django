@@ -16,6 +16,50 @@ body::before {
     z-index: -1; /* Keep the background behind other elements */
 }
 
+.task-item {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.task-title {
+    color: #000000;
+    font-weight: 400;
+}
+
+#task-deadline {
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+.btn-done {
+    background-color: #198754;
+    border-color: #198754;
+    color: #fff;
+}
+
+.task-divider {
+    border-top: 1px solid #dee2e6;
+}
+
+.task-tag, .task-description {
+    color: #000000;
+}
+
+.beautiful-text {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: #000000;
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
 .navbar-nav {
     width: 100%;
     justify-content: center;
@@ -87,5 +131,6 @@ footer p {
 .form-inline select:focus {
     box-shadow: none;
 }
+
 
 
