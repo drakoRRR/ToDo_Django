@@ -21,6 +21,12 @@ def login_page(request):
         return render(request, 'members/login.html')
 
 
+def logout_page(request):
+    logout(request)
+    messages.success(request, 'You Were Logged out!')
+    return redirect('main')
+
+
 def register_page(request):
     '''Sign in page'''
     return render(request, 'members/register.html')
