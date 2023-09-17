@@ -62,9 +62,9 @@ def create_task(request):
     if request.method == 'POST':
         form = TaskForm(request.POST)
         if form.is_valid():
-            task = form.save(commit=False)  # Создайте задачу, но не сохраняйте ее в базе данных пока
-            task.user = request.user  # Свяжите задачу с текущим пользователем
-            task.save()  # Теперь сохраните задачу в базе данных
+            task = form.save(commit=False)
+            task.user = request.user
+            task.save()
 
             # Добавьте задачу в сессию пользователя
             if 'tasks' not in request.session:
@@ -94,7 +94,6 @@ def delete_task(request, task_id):
         if task.user == request.user:
             task.delete()
 
-            # Удалите задачу из сессии пользователя
             if 'tasks' in request.session and task_id in request.session['tasks']:
                 request.session['tasks'].remove(task_id)
 
@@ -106,3 +105,22 @@ def delete_task(request, task_id):
 
     return redirect('main')
 
+
+def sort_tasks(request):
+    sort_option = request.GET.get('sorting_option', 'date')
+    if request.user.is_authenticated:
+        if sort_option == 'date':
+            tasks = Task.objects.filter(user=request.user).order_by('-deadline')
+        elif sort_option == 'alphabet':
+            tasks = Task.objects.filter(user=request.user).order_by('title')
+    else:
+        tasks = []
+
+    city_info = get_weather(get_client_city(request))
+
+    context = {
+        'weather': city_info,
+        'tasks': tasks,
+    }
+
+    return render(request, 'todo/mainpage.html', context)

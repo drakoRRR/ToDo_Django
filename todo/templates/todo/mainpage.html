@@ -41,14 +41,14 @@
         <div class="col-md-9">
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <h1 id="task">My Tasks</h1>
-                <form class="form-inline">
+                <form class="form-inline" method="GET" action="{% url 'sort_tasks' %}">
                     <label class="mr-sm-2" for="inlineFormCustomSelect">Sort by</label>
-                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                        <option selected>Choose...</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="sorting_option">
+                        <option selected disabled>Choose...</option>
+                        <option value="date">Date</option>
+                        <option value="alphabet">Alphabet</option>
                     </select>
+                    <button type="submit" class="btn btn-success">Submit</button>
                 </form>
             </div>
             <form action="" method="post">
