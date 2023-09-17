@@ -2,6 +2,7 @@ import requests
 from django.shortcuts import render, redirect
 from .forms import TaskForm
 from .models import Task
+from django.contrib import messages
 
 # Create your views here.
 def get_weather(city):
@@ -38,15 +39,17 @@ def get_client_city(request):
 def main_page(request):
     '''Main page with the tasks'''
 
-    tasks = Task.objects.all()
+    if request.user.is_authenticated:
+        tasks = Task.objects.filter(user=request.user)
+    else:
+        tasks = []
+
     city_info = get_weather(get_client_city(request))
 
     context = {
         'weather': city_info,
         'tasks': tasks,
     }
-
-    get_client_city(request)
 
     return render(request, 'todo/mainpage.html', context)
 
@@ -59,7 +62,16 @@ def create_task(request):
     if request.method == 'POST':
         form = TaskForm(request.POST)
         if form.is_valid():
-            form.save()
+            task = form.save(commit=False)  # Создайте задачу, но не сохраняйте ее в базе данных пока
+            task.user = request.user  # Свяжите задачу с текущим пользователем
+            task.save()  # Теперь сохраните задачу в базе данных
+
+            # Добавьте задачу в сессию пользователя
+            if 'tasks' not in request.session:
+                request.session['tasks'] = []
+
+            request.session['tasks'].append(task.id)
+
             return redirect('main')
         else:
             error = 'Wrong form'
@@ -77,6 +89,20 @@ def create_task(request):
 
 
 def delete_task(request, task_id):
-    task_to_delete = Task.objects.get(id=task_id)
-    task_to_delete.delete()
+    try:
+        task = Task.objects.get(id=task_id)
+        if task.user == request.user:
+            task.delete()
+
+            # Удалите задачу из сессии пользователя
+            if 'tasks' in request.session and task_id in request.session['tasks']:
+                request.session['tasks'].remove(task_id)
+
+            messages.success(request, 'Task deleted successfully.')
+        else:
+            messages.error(request, 'You do not have permission to delete this task.')
+    except Task.DoesNotExist:
+        messages.error(request, 'Task does not exist.')
+
     return redirect('main')
+
