@@ -35,6 +35,7 @@ body::before {
     background-color: #0056b3;
 }
 
+
 .navbar {
     display: flex;
     flex-direction: column;
@@ -86,4 +87,5 @@ footer p {
 .form-inline select:focus {
     box-shadow: none;
 }
+
 

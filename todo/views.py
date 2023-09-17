@@ -59,3 +59,10 @@ def create_task(request):
     return render(request, 'todo/addtask.html', context)
 
 
+def login_page(request):
+    '''Sign up page'''
+    return render(request, 'todo/login_reg_pages/login.html')
+
+
+def register_page(request):
+    return render(request, 'todo/login_reg_pages/register.html')
