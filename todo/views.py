@@ -83,3 +83,9 @@ def login_page(request):
 
 def register_page(request):
     return render(request, 'todo/login_reg_pages/register.html')
+
+
+def delete_task(request, task_id):
+    task_to_delete = Task.objects.get(id=task_id)
+    task_to_delete.delete()
+    return redirect('main')
