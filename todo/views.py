@@ -1,5 +1,7 @@
 import requests
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .forms import TaskForm
+from .models import Task
 
 # Create your views here.
 def get_weather(city):
@@ -36,10 +38,12 @@ def get_client_city(request):
 def main_page(request):
     '''Main page with the tasks'''
 
+    tasks = Task.objects.all()
     city_info = get_weather(get_client_city(request))
 
     context = {
-        'weather': city_info
+        'weather': city_info,
+        'tasks': tasks,
     }
 
     get_client_city(request)
@@ -50,10 +54,23 @@ def main_page(request):
 def create_task(request):
     '''Page of creating tasks'''
 
+    error = ''
+
+    if request.method == 'POST':
+        form = TaskForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('main')
+        else:
+            error = 'Wrong form'
+
     city_info = get_weather('London')
+    form = TaskForm()
 
     context = {
-        'weather': city_info
+        'weather': city_info,
+        'form': form,
+        'error': error,
     }
 
     return render(request, 'todo/addtask.html', context)

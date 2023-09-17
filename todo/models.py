@@ -4,7 +4,7 @@ from django.db import models
 class Task(models.Model):
     '''Model for tasks'''
     title = models.CharField(max_length=255)
-    deadline = models.DateTimeField()
+    deadline = models.DateField()
     tag = models.CharField(max_length=50)
     description = models.TextField()
 

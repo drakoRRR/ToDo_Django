@@ -42,27 +42,21 @@
                 </form>
             </div>
             <ul class="list-group">
-                <li class="list-group-item" style="margin-bottom: 20px; padding: 20px; background-color: #f8f9fa;">
-                    <p>Task 1 <span class="badge bg-secondary">11:00 AM 26 February</span> <button type="button" class="btn btn-success btn-sm float-end">Done</button> </p>
-                    <hr>
-                    <p><strong>Tag:</strong> Hobby</p>
-                    <hr>
-                    <p>Some information you need to do  </p>
-                </li>
-                <li class="list-group-item" style="margin-bottom: 20px; padding: 20px; background-color: #f8f9fa;">
-                    <p>Task 1 <span class="badge bg-secondary">11:00 AM 26 February</span> <button type="button" class="btn btn-success btn-sm float-end">Done</button> </p>
-                    <hr>
-                    <p><strong>Tag:</strong> Hobby</p>
-                    <hr>
-                    <p>Some information you need to do  </p>
-                </li>
-                <li class="list-group-item" style="margin-bottom: 20px; padding: 20px; background-color: #f8f9fa;">
-                    <p>Task 1 <span class="badge bg-secondary">11:00 AM 26 February</span> <button type="button" class="btn btn-success btn-sm float-end">Done</button> </p>
-                    <hr>
-                    <p><strong>Tag:</strong> Hobby</p>
-                    <hr>
-                    <p>Some information you need to do  </p>
-                </li>
+                {% if tasks %}
+                    {% for task in tasks %}
+                    <li class="list-group-item" style="margin-bottom: 20px; padding: 20px; background-color: #f8f9fa;">
+                        <p>{{ task.title }} <span class="badge bg-secondary">{{ task.deadline }}</span> <button type="button" class="btn btn-success btn-sm float-end">Done</button> </p>
+                        <hr>
+                        <p><strong>Tag:</strong> {{ task.tag }}</p>
+                        <hr>
+                        <p>{{ task.description }} </p>
+                    </li>
+                    {% endfor %}
+                {% else %}
+                    <div class="beautiful-text">
+                        You have no tasks !
+                    </div>
+                {% endif %}
             </ul>
         </div>
     </div>

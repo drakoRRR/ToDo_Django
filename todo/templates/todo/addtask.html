@@ -29,45 +29,55 @@
             {% include 'todo/weather.html' %}
 
             <div class="col-md-9">
-                <h1 id="headlogo">Adding Task</h1>
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-25">
-                                <label for="fname">Task Name</label>
+                <h1 id="task">Add Task</h1>
+                <form method="post">
+                    {% csrf_token %}
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="fname">Task Name</label>
+                                </div>
+                                <div class="col-75">
+                                    {{ form.title }}
+                                </div>
                             </div>
-                            <div class="col-75">
-                                <input type="text" id="fname" name="firstname" placeholder="Your name..">
+                            <hr>
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="options">Tag</label>
+                                </div>
+                                <div class="col-75">
+                                    {{ form.tag }}
+                                </div>
                             </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-25">
-                                <label for="options">Tag</label>
+                            <hr>
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="task">Description of task</label>
+                                </div>
+                                <div class="col-75">
+                                    {{ form.description }}
+                                </div>
                             </div>
-                            <div class="col-75">
-                                <select id="options" name="options">
-                                    <option value="work">Work</option>
-                                    <option value="study">Study</option>
-                                    <option value="hobby">Hobby</option>
-                                </select>
+                            <hr>
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="dueDate">Due Date</label>
+                                </div>
+                                <div class="col-75">
+                                    {{ form.deadline }}
+                                </div>
                             </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-25">
-                                <label for="task">Description of task</label>
-                            </div>
-                            <div class="col-75">
-                                <textarea id="task" name="task" placeholder="Write something.." style="height:200px"></textarea>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-                <br>
-                <div class="d-grid gap-2">
-                    <button type="button" class="btn btn-success btn-lg">Add</button>
-                </div>
+                            <br>
+                        </li>
+                    </ul>
+                    <br>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-success btn-lg">Add</button>
+                        <span>{{ error }}</span>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
