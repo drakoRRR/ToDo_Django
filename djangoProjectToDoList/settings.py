@@ -77,8 +77,10 @@ WSGI_APPLICATION = 'djangoProjectToDoList.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'task_db',
+        'USER': 'task',
+        'PASSWORD': '12345678v',
     }
 }
 
