@@ -1,10 +1,61 @@
 body {
     font-family: 'Roboto Condensed', sans-serif;
+    position: relative;
+    padding-bottom: 50px;
+    box-sizing: border-box;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
+
+.wrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+    flex-grow: 1;
+}
+
+footer {
+    background-color: #f8f9fa;
+    padding: 10px 0;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    height: 60px;
+}
+
+footer p {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-content a {
+    margin: 0 10px;
+}
+
+.footer-content img {
+    width: 35px;
+    height: 35px;
+}
+
+.navbar-nav .nav-link {
+            cursor: pointer;
+        }
 
 body::before {
     content: "";
-    position: fixed; /* Fixed position so the blur covers the entire screen */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -13,7 +64,7 @@ body::before {
     background-size: cover;
     background-repeat: no-repeat;
     filter: blur(5px);
-    z-index: -1; /* Keep the background behind other elements */
+    z-index: -1;
 }
 
 .task-item {
@@ -79,7 +130,6 @@ body::before {
     background-color: #0056b3;
 }
 
-
 .navbar {
     display: flex;
     flex-direction: column;
@@ -93,20 +143,6 @@ body::before {
 .custom-link {
     font-size: 20px;
     padding: 10px 20px;
-}
-
-footer {
-    background-color: #f8f9fa; /* Set the background color for the footer */
-    padding: 20px 0; /* Add some padding to the top and bottom of the footer */
-    text-align: center; /* Center-align the content */
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-
-footer p {
-    margin-top: 10px; /* Add space between the line and the company name */
-    font-size: 14px; /* Set the font size for the company name */
 }
 
 .form-inline {
@@ -131,6 +167,9 @@ footer p {
 .form-inline select:focus {
     box-shadow: none;
 }
+
+
+
 
 
 

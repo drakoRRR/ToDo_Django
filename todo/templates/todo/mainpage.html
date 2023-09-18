@@ -13,28 +13,22 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@700&family=Roboto&family=Roboto+Condensed&display=swap" rel="stylesheet">
     <title>Todo List</title>
-    <style>
-        .navbar-nav .nav-link {
-            cursor: pointer;
-        }
-    </style>
 </head>
 <body>
 
 {% include 'todo/template_navbar.html' %}
 
-
 <div class="container mt-4">
     <div class="row">
 
-{% if messages %}
-    {% for message in messages %}
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            {{ message }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    {% endfor %}
-{% endif %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
 
         {% include 'todo/weather.html' %}
 
@@ -59,7 +53,8 @@
                                 <p>
                                 <h3 class="task-title">{{ task.title }}</h3> <span
                                     class="badge bg-secondary" id="task-deadline">{{ task.deadline }}</span>
-                                <a href="{% url 'delete_task' task.id %}" class="btn btn-success btn-sm float-end">Done</a>
+                                <a href="{% url 'delete_task' task.id %}"
+                                   class="btn btn-success btn-sm float-end">Done</a>
                                 </p>
                                 <hr class="task-divider">
                                 <p class="task-tag"><strong>Tag:</strong> {{ task.tag }}</p>
@@ -72,17 +67,13 @@
                             <h3>You have no tasks !</h3>
                         </div>
                     {% endif %}
-            </ul>
+                </ul>
             </form>
         </div>
     </div>
 </div>
 
-<footer>
-    <div class="footer-content">
-        <p>&copy; 2023 ToDo List Pet Project</p>
-    </div>
-</footer>
+{% include 'todo/footer.html' %}
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
