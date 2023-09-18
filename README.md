@@ -59,4 +59,11 @@ Our view gathers all the data from this request and stores it in the database.
 We're implementing straightforward sorting that using ORDER BY on the main page 
 based on the category selected by the user.
 
+# Usage Website
+---
+![text](media_for_readme/main_usage.gif)
+
+The primary objective of this project was to gain a deeper understanding of Django, improve my skills 
+in working with databases, and enhance my overall proficiency in backend programming.
+
 
