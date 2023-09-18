@@ -124,3 +124,7 @@ def sort_tasks(request):
     }
 
     return render(request, 'todo/mainpage.html', context)
+
+
+def page_not_found(request, exception):
+    return render(request, 'todo/page_not_found.html')

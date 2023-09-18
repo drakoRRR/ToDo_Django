@@ -1,0 +1,25 @@
+{% load static %}
+
+<!doctype html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Error 404 - Page Not Found!</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'todo/css/page_not_found_style.css' %}" />
+    <link href="{% static 'todo/images/404.svg' %}" rel="shortcut icon" type="image/x-icon" />
+</head>
+
+<body>
+<div class="container">
+    <img class="ops" src="{% static 'todo/images/404.svg' %}" />
+    <br />
+    <h2>Page not found
+        <br /> </h2>
+    <br />
+    <a class="buton" href="{% url 'main' %}">Main Page</a>
+</div>
+</body>
+
+</html>
