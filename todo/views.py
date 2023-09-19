@@ -76,7 +76,7 @@ def create_task(request):
         else:
             error = 'Wrong form'
 
-    city_info = get_weather('London')
+    city_info = get_weather(get_client_city(request))
     form = TaskForm()
 
     context = {
